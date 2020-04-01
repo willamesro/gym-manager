@@ -1,12 +1,13 @@
 const fs = require('fs')
 const data = require('./data.json')
+const {age} = require('./utils')
 // create
   exports.create = (req, res) =>{
 
     const keys = Object.keys(req.body)
     
     for( key of keys){
-      if(req.body[key]=="")
+      if(req.body[key]=='')
       return res.send('please fill all field')
     }
     
@@ -43,11 +44,12 @@ const data = require('./data.json')
 
     if(!foundInstructors)  return res.send('Instructor not found')
     
+
     const instructor = {
       ...foundInstructors,
-      age: (parseInt((((((Date.now()-foundInstructors.birth ) / 1000) / 60) / 60) /24)/365.25) ),
+      age: age(foundInstructors.birth),
       services: foundInstructors.services.split(','),
-      created_at: foundInstructors.created_at
+      created_at: (new Intl.DateTimeFormat('en-BR').format(foundInstructors.created_at))
     }
   
     return res.render('instructors/show', {instructor})
