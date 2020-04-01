@@ -1,6 +1,6 @@
 # Gym Manager
 
-## Projeto gerenciador de academia**
+## Projeto gerenciador de academia
 
 ### Funcionalidade
 
