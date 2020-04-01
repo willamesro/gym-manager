@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon  server.js",
-    "browsersync": "browser-sync start --proxy http://localhost:5001 --files 'public,views'"
+    "start": "nodemon  server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
