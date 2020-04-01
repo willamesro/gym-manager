@@ -1,16 +1,16 @@
 # Gym Manager
 
-**Projeto gerenciador de academia**
+## Projeto gerenciador de academia**
 
-###### Funcionalidade
+### Funcionalidade
 
 - Cadastrar Instrutor
   - Listar
   - Visualiar detalhes
-  - Atualziar
+  - Atualizar
 
 - Cadastrar Mebros
   - Listar
   - Visualiar detalhes
-  - Atualziar
+  - Atualizar
  
