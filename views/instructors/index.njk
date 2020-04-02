@@ -1,46 +1,26 @@
 {% extends 'layout.njk' %}
 
 {% block content %}
-  <div class="card">
-    <section class="avatar"
-    style = "background: url(https://source.unsplash.com/collection/9659878/500x500) no-repeat center/cover"
-    >
-    
-    </section>
-    <section class="details">
-      <h3>Detalhes</h3>
+<div class="card">
+  <table>
+    <thead>
 
-      <div class="item">
-        <div>instrutor</div>
-        <div>Wilames Alves</div>
-      </div>
+      <tr>
+        <th>Instructor</th>
+        <th> Atendimento</th>
+      </tr>
+    </thead>
 
-      <div class="item">
-        <div>Idade</div>
-        <div>25</div>
-      </div>
+    <tbody>
+      {%for instructor in instructors %}
+      <tr>
+        <td>{{instructor.name}}</td>
+        <td>{{instructor.services}}</td>
+      </tr>
+      {% endfor %}
 
-      <div class="item">
-        <div>Sexo</div>
-        <div>Masculino</div>
-      </div>
-
-      <div class="item">
-        <div>Acompanhamento</div>
-        <div> 
-          <span>Musculação</span>
-          <span>Funcional</span>
-        </div>
-      </div>
-
-      <div class="item">
-        <div>Desde</div>
-        <div> 
-          21/12/1992
-        </div>
-      </div>
-
-    </section>
-  </div>
+    </tbody>
+  </table>
+</div>
 
 {% endblock content %}
