@@ -4,7 +4,7 @@ const {age, date} = require('./utils')
 
   //index
   exports.index = (req, res) => {
-    return res.render('instructors/index', {instructors: data.instructors})
+      return res.render('instructors/index', {instructors: data.instructors})
   }
 
   //show
@@ -99,7 +99,8 @@ const {age, date} = require('./utils')
     const instructor = {
       ...foundInstructors,
       ...req.body,
-      birth: Date.parse(req.body.birth)
+      birth: Date.parse(req.body.birth),
+      id: Number(req.body.id)
     }
 
     data.instructors[index] = instructor
