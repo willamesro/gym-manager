@@ -133,9 +133,11 @@ input, .details .item div:nth-child(2) {
 }
 /* form*/
 
-input {
+input, select {
     width: 100%;
     outline: none;
+    color: #555;
+   
 
 }
 input[type="radio"] {
@@ -215,7 +217,8 @@ tbody tr td:first-child span {
 
 }
 
-tbody tr td:last-child a {
+tbody tr td:last-child a,
+.table-conteiner > a {
     background-color: var(--primary-color);
     padding: 8px 16px;
     text-transform: uppercase;
@@ -224,6 +227,12 @@ tbody tr td:last-child a {
     border-radius: 4px;
     text-decoration: none;
 }
+.table-conteiner > a {
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+
 .table-conteiner thead tr th:last-child, 
 td:last-child{
     text-align: center;
