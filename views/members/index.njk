@@ -1,38 +1,44 @@
 {% extends 'layout.njk' %}
 
 {% block content %}
-<div class="card table-conteiner ">
-<a href="/members/create">Novo</a>
-  <table>
-    <thead>
+  <div class="card table-conteiner ">
+    <a href="/members/create">Novo</a>
+    <table>
+      <thead>
 
-      <tr>
-        <th>Nome</th>
-        <th> E-mail</th>
-        <th> Peso</th>
-        <th> Altura</th>
-        <th> Ação</th>
-      </tr>
-    </thead>
+        <tr>
+          <th>Nome</th>
+          <th>
+            E-mail</th>
+          <th>
+            Peso</th>
+          <th>
+            Altura</th>
+          <th>
+            Ação</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      {% for member in members %}
-      <tr>
-        <td>
-          <div>
-            <span style="background-image: url({{member.avatar_url}})"></span>
-            {{member.name}}
-          </div>
-        </td>
-        <td>{{member.email}}</td>
-        <td>{{member.weight}}kg</td>
-        <td>{{member.height}}cm</td>
-        <td><a href="/members/{{member.id}}">ver</a> </td>
-      </tr>
-      {% endfor %}
+      <tbody>
+        {% for member in members %}
+          <tr>
+            <td>
+              <div>
+                <span style="background-image: url({{member.avatar_url}})"></span>
+                {{member.name}}
+              </div>
+            </td>
+            <td>{{member.email}}</td>
+            <td>{{member.weight}}kg</td>
+            <td>{{member.height}}cm</td>
+            <td>
+              <a href="/members/{{member.id}}">ver</a>
+            </td>
+          </tr>
+        {% endfor %}
 
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 
 {% endblock content %}

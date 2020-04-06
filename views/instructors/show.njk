@@ -2,11 +2,7 @@
 
 {% block content %}
   <div class="card">
-    <section class="avatar"
-    style = "background: url({{instructor.avatar_url}}) no-repeat center/cover"
-    >
-    
-    </section>
+    <section class="avatar" style="background: url({{instructor.avatar_url}}) no-repeat center/cover"></section>
     <section class="details">
       <h3>Detalhes</h3>
 
@@ -27,15 +23,16 @@
 
       <div class="item">
         <div>Acompanhamento</div>
-        <div> {% for service in instructor.services %}
-          <span class="span-format">{{service}}</span>
-         {% endfor %}
+        <div>
+          {% for service in instructor.services %}
+            <span class="span-format">{{service}}</span>
+          {% endfor %}
         </div>
       </div>
 
       <div class="item">
         <div>Desde</div>
-        <div> 
+        <div>
           {{instructor.created_at}}
         </div>
       </div>

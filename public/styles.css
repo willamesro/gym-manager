@@ -19,7 +19,7 @@ header {
     background-color: white;
     width: 100%;
     padding: 32px;
-    text-align:  center;
+    text-align: center;
     box-sizing: border-box;
 }
 
@@ -27,7 +27,7 @@ header {
     font-size: 22px;
 }
 
-.links a + a{
+.links a+a {
     margin-left: 32px;
 }
 
@@ -42,12 +42,11 @@ header {
     color: var(--primary-color);
 }
 
-
-.links a:hover{
-    color:var(--primary-color);
+.links a:hover {
+    color: var(--primary-color);
 }
 
-.links a::after{
+.links a::after {
     content: '';
     width: 0;
     height: 2px;
@@ -57,10 +56,10 @@ header {
     bottom: 0;
     margin-right: 8px;
 }
+
 .links a:hover::after {
     width: 100%;
     transition: width 200ms ease-in-out;
- 
 }
 
 .card {
@@ -71,54 +70,59 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* sombra*/
-    box-shadow: 0px 2px 6px -2px  rgba(0,0,0,0.4);
-
+    box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.4);
     /* animação*/
     animation: up 200ms ease-out;
 }
 
 @keyframes up {
-    from{
+    from {
         opacity: 0;
-        transform: translateY(15px) ;
+        transform: translateY(15px);
     }
-    to{
+    to {
         opacity: 1;
-
     }
 }
+
+
 /* Details*/
 
 .details {
     padding: 32px;
 }
+
 .details .item {
-    border-bottom:  1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 16px 0;
 }
-.details .item:last-child {
-    border:  none;
-}
 
+.details .item:last-child {
+    border: none;
+}
 
 .details h3,
 .details .item div:nth-child(1) {
-   font-size: 14px;
-   line-height: 24px;
-   color: #777;
-   letter-spacing: 0.7px;
-   font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #777;
+    letter-spacing: 0.7px;
+    font-weight: normal;
 }
-input, .details .item div:nth-child(2) {
+
+input,
+.details .item div:nth-child(2) {
     color: #555;
     font-weight: bold;
     font-size: 18px;
 }
+
 .details h3 {
     text-transform: uppercase;
     font-weight: bold;
     color: var(--primary-color);
 }
+
 .span-format {
     padding: 8px 16px;
     background-color: var(--secondary-color);
@@ -131,25 +135,29 @@ input, .details .item div:nth-child(2) {
     font-size: 12px;
     font-weight: bold;
 }
+
+
 /* form*/
 
-input, select {
+input,
+select {
     width: 100%;
     outline: none;
     color: #555;
-   
-
 }
+
 input[type="radio"] {
     width: initial;
     margin-right: 4px;
-   
 }
+
 input::placeholder {
     font-size: 16px;
     font-weight: normal;
 }
-button[type="submit"], a.button {
+
+button[type="submit"],
+a.button {
     padding: 8px 32px;
     background-color: var(--primary-color);
     border-radius: 4px;
@@ -158,16 +166,20 @@ button[type="submit"], a.button {
     color: white;
     font-size: 16px;
 }
+
 a.button {
     display: block;
     box-sizing: border-box;
     text-align: center;
     text-decoration: none;
 }
+
 #form-delete button {
     margin-top: 16px;
     background-color: lightcoral;
 }
+
+
 /*  INDEX ENSTRUCTORS*/
 
 .table-conteiner {
@@ -175,17 +187,20 @@ a.button {
     padding: 40px;
     box-sizing: border-box;
 }
+
 .table-conteiner table {
     width: 100%;
     border-spacing: 0;
 }
-.table-conteiner  thead tr th {
+
+.table-conteiner thead tr th {
     text-align: left;
 }
-td,th{
+
+td,
+th {
     padding: 16px;
     border-bottom: 1px solid #d9d9d9;
-    
 }
 
 th {
@@ -198,12 +213,11 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
-tbody tr td:first-child div  {
+tbody tr td:first-child div {
     display: grid;
     grid-template-columns: 64px 1fr;
     align-items: center;
     justify-content: center;
-  
 }
 
 tbody tr td:first-child span {
@@ -213,12 +227,11 @@ tbody tr td:first-child span {
     background-size: cover;
     border-radius: 50%;
     box-shadow: 3px 1px 6px -4px black;
-    border:  2px solid white;
-
+    border: 2px solid white;
 }
 
 tbody tr td:last-child a,
-.table-conteiner > a {
+.table-conteiner>a {
     background-color: var(--primary-color);
     padding: 8px 16px;
     text-transform: uppercase;
@@ -227,14 +240,13 @@ tbody tr td:last-child a,
     border-radius: 4px;
     text-decoration: none;
 }
-.table-conteiner > a {
+
+.table-conteiner>a {
     margin-bottom: 16px;
     display: inline-block;
 }
 
-
-.table-conteiner thead tr th:last-child, 
-td:last-child{
+.table-conteiner thead tr th:last-child,
+td:last-child {
     text-align: center;
- }
-
+}
