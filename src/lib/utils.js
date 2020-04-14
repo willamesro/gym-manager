@@ -1,5 +1,5 @@
 module.exports = {
-    age: timestamp => {
+    age(timestamp) {
         return parseInt(
             (
                 (
@@ -13,7 +13,7 @@ module.exports = {
         )
     },
 
-    age2: timestamp => {
+    age2(timestamp) {
         const today = new Date()
         const birtDate = new Date(timestamp)
 
@@ -26,10 +26,9 @@ module.exports = {
         return age
     },
 
-    date: timestamp => {
+    date(timestamp) {
 
         const date = new Date(timestamp)
-
         const year = date.getUTCFullYear()
         const month = `0${date.getUTCMonth()+1}`.slice(-2)
         const day = `0${date.getUTCDate()}`.slice(-2)
@@ -40,7 +39,7 @@ module.exports = {
             day,
             iso: year + '-' + month + '-' + day,
             happy: day + '/' + month,
-            init: day + '/' + month + '/' + year
+            format: day + '/' + month + '/' + year
         }
     }
 }
