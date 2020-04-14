@@ -2,7 +2,7 @@ const db = require('../../config/db')
 const { age, date } = require('../../lib/utils')
 module.exports = {
     all(callback) {
-        db.query(`SELECT * FROM members`, (err, result) => {
+        db.query(`SELECT * FROM members ORDER BY name ASC`, (err, result) => {
             if (err) throw `Database Error: ${err}`
 
             callback(result.rows)

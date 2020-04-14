@@ -2,7 +2,7 @@ const db = require('../../config/db')
 const { age, date } = require('../../lib/utils')
 module.exports = {
     all(callback) {
-        db.query(`SELECT * FROM instructors`, (err, result) => {
+        db.query(`SELECT * FROM instructors ORDER BY name ASC`, (err, result) => {
             if (err)  throw `Database Error: ${err}`
 
             callback(result.rows)
@@ -38,7 +38,7 @@ module.exports = {
             callback(results.rows[0])
         })
     },
-    
+
     update(data, callback) {
         const query = `UPDATE instructors SET 
         avatar_url=($1),
