@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
 :root {
-    --primary-color: #7159c1;
+    --primary-color: #08a8cf;
+    --primary2-color: #1db690;
     --secondary-color: #F7DF1E;
 }
 
@@ -111,6 +112,8 @@ header {
 }
 
 input,
+option,
+select,
 .details .item div:nth-child(2) {
     color: #555;
     font-weight: bold;
@@ -124,7 +127,6 @@ input,
 }
 
 .span-format {
-   
     background-color: var(--secondary-color);
     border-radius: 16px;
     color: #777;
@@ -135,7 +137,6 @@ input,
     font-size: 12px;
     font-weight: bold;
     padding: 8px 16px;
-
 }
 
 
@@ -233,7 +234,7 @@ tbody tr td:first-child span {
 }
 
 tbody tr td:last-child a,
-.table-conteiner>a {
+.table-conteiner .header>a {
     background-color: var(--primary-color);
     padding: 8px 16px;
     text-transform: uppercase;
@@ -243,12 +244,35 @@ tbody tr td:last-child a,
     text-decoration: none;
 }
 
-.table-conteiner>a {
-    margin-bottom: 16px;
-    display: inline-block;
-}
-
 .table-conteiner thead tr th:last-child,
 td:last-child {
     text-align: center;
+}
+
+
+/* FILTERS*/
+
+.table-conteiner .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-conteiner .header form {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-gap: 8px;
+    align-items: center;
+}
+
+.table-conteiner .header form button {
+    margin-top: 0;
+}
+
+.table-conteiner .header form input {
+    box-sizing: border-box;
+    border:  1px solid #eee;
+    border-radius: 4px;
+    padding: 4px 8px;
+
 }

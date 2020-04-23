@@ -2,8 +2,11 @@ const db = require('../../config/db')
 const { age, date } = require('../../lib/utils')
 module.exports = {
     all(callback) {
-        db.query(`SELECT * FROM instructors ORDER BY name ASC`, (err, result) => {
-            if (err)  throw `Database Error: ${err}`
+        const query = `select instructors.*, count(members) as total_members  from instructors left join members 
+        on members.instructor_id = instructors.id group by instructors.id LIMIT 5 OFFSET 0`
+
+        db.query(query, (err, result) => {
+            if (err) throw `Database Error: ${err}`
 
             callback(result.rows)
 
@@ -39,6 +42,21 @@ module.exports = {
         })
     },
 
+    findBy(filter, callback) {
+        const query = `SELECT instructors.*, count(members) AS total_members
+        FROM instructors LEFT JOIN members ON
+        (members.instructor_id = instructors.id)
+        WHERE instructors.name ILIKE '%${filter}%' OR instructors.services ILIKE '%${filter}%'
+        group by instructors.id`
+        
+        db.query(query, (err, results) => {
+            if (err) throw `Database Error: ${err}`
+
+        
+            callback(results.rows)
+        })
+    },
+
     update(data, callback) {
         const query = `UPDATE instructors SET 
         avatar_url=($1),
@@ -58,19 +76,36 @@ module.exports = {
 
         ]
         db.query(query, values, (err, results) => {
-            if(err) throw `Database Error: ${err}`
+            if (err) throw `Database Error: ${err}`
 
             callback()
 
         })
     },
 
-    delete(id, callback){
-        db.query('DELETE FROM instructors WHERE id=$1', [id], (err, result)=>{
-            if(err) throw `Database error delete: ${err}`
+    delete(id, callback) {
+        db.query('DELETE FROM instructors WHERE id=$1', [id], (err, result) => {
+            if (err) throw `Database error delete: ${err}`
 
             callback()
         })
+    },
+    paginate(params){
+        const {filter, limit, offset, callback} = params
+        let query = `SELECT instructors.*, count(members) as total_students FROM instructors LEFT JOIN 
+        members ON (instructors.id=members.instructor_id)`
+        if(filter) {
+            query = `${query} 
+            WHERE instructors.name ILIKE '${filter}'
+            OR instructors.SERVICES ILIKE '${filter}'
+            `
+        }
+        query = `${query} GROUP BY instructors.id LIMIT $1 OFFSET $2` 
+        db.query(query, [limit, offset], (err,results)=>{
+            if(err)  throw `Databse erro paginate! ${err}`
+
+            callback(results.rows)
+        } )
     }
 
 }

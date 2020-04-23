@@ -1,5 +1,6 @@
 const { age2, date } = require('../../lib/utils')
 const Member = require('../models/Member')
+const Instructor = require('../models/Instructor')
 
 module.exports = {
     index(req, res) {
@@ -9,7 +10,9 @@ module.exports = {
     },
 
     create(req, res) {
-        return res.render('members/create')
+        Instructor.all(options => {
+            return res.render('members/create', { instructors: options })
+        })
     },
 
     post(req, res) {
@@ -31,7 +34,7 @@ module.exports = {
     show(req, res) {
         Member.find(req.params.id, function(member) {
             if (!member) return res.send('Member not Found!')
-
+            
             member.birth = date(member.birth).happy
 
             return res.render('members/show', { member })
@@ -47,7 +50,9 @@ module.exports = {
 
             member.birth = date(member.birth).iso
 
-            return res.render('members/edit', { member })
+            Instructor.all(options => {
+                return res.render('members/edit', { member, instructors: options })
+            })
 
         })
 
