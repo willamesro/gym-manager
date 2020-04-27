@@ -8,7 +8,7 @@
       <a href="/instructors/create">Novo</a>
 
       <form action="/instructors" method="GET">
-        <input type="text" name="filter" value="{{filter}} " placeholder="Filtrar">
+        <input type="text" name="filter" value="{{filter}}" placeholder="Filtrar">
         <button type="submit">Buscar </button>
       </form>
 
@@ -58,7 +58,8 @@
     </table>
     <div class="pagination"
     data-page={{pagination.page}}
-    data-total={{pagination.total}} >
+    data-total={{pagination.total}} 
+    data-filter={{filter}} >
         
     </div>
   </div>

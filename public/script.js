@@ -35,14 +35,34 @@ function paginate(selectedPage, totalPage) {
     return pages
 }
 
-const pagination =document.querySelector('.pagination')
-const page = +pagination.dataset.page
-const total = +pagination.dataset.total
-const pages = paginate(page, total)
+const pagination = document.querySelector('.pagination')
 
-let elements =''
+function createPagination() {
 
-for(let page of pages){
-    elements += `<a href="?page=${page}"> ${page}</a>`
+    const page = +pagination.dataset.page
+    const total = +pagination.dataset.total
+    const filter = pagination.dataset.filter
+    const pages = paginate(page, total)
+    let elements = ''
+
+
+    for (let page of pages) {
+        if (String(page).includes('...')) {
+            elements += `<span>${page}</span>`
+
+        } else {
+
+            if (filter) {
+                elements += `<a href="?page=${page}&filter=${filter}"> ${page}</a>`
+            } else {
+                elements += `<a href="?page=${page}"> ${page}</a>`
+            }
+        }
+    }
+    pagination.innerHTML = elements
+
 }
-pagination.innerHTML = elements
+
+if (pagination) {
+    createPagination(pagination)
+}

@@ -99,11 +99,9 @@ module.exports = {
 
         if (filter) {
 
-            queryFilter = `${query} 
-            WHERE instructors.name ILIKE '${filter}'
-            OR instructors.SERVICES ILIKE '${filter}'
+            queryFilter = `WHERE instructors.name ILIKE '%${filter}%' OR instructors.services ILIKE '%${filter}%'
             `
-            totalQuery = `SELECT count(*) FROM instructors ${queryFilter} AS total`
+            totalQuery = `(SELECT count(*) FROM instructors ${queryFilter}) AS total`
         }
 
         query = `SELECT instructors.*, ${totalQuery}, count(members) as total_students FROM instructors LEFT JOIN 
