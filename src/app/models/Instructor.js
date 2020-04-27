@@ -48,11 +48,11 @@ module.exports = {
         (members.instructor_id = instructors.id)
         WHERE instructors.name ILIKE '%${filter}%' OR instructors.services ILIKE '%${filter}%'
         group by instructors.id`
-        
+
         db.query(query, (err, results) => {
             if (err) throw `Database Error: ${err}`
 
-        
+
             callback(results.rows)
         })
     },
@@ -90,22 +90,30 @@ module.exports = {
             callback()
         })
     },
-    paginate(params){
-        const {filter, limit, offset, callback} = params
-        let query = `SELECT instructors.*, count(members) as total_students FROM instructors LEFT JOIN 
-        members ON (instructors.id=members.instructor_id)`
-        if(filter) {
-            query = `${query} 
+    paginate(params) {
+        const { filter, limit, offset, callback } = params
+
+        let query = '',
+            queryFilter = '',
+            totalQuery = `(SELECT count(*) FROM  instructors) AS total`
+
+        if (filter) {
+
+            queryFilter = `${query} 
             WHERE instructors.name ILIKE '${filter}'
             OR instructors.SERVICES ILIKE '${filter}'
             `
+            totalQuery = `SELECT count(*) FROM instructors ${queryFilter} AS total`
         }
-        query = `${query} GROUP BY instructors.id LIMIT $1 OFFSET $2` 
-        db.query(query, [limit, offset], (err,results)=>{
-            if(err)  throw `Databse erro paginate! ${err}`
+
+        query = `SELECT instructors.*, ${totalQuery}, count(members) as total_students FROM instructors LEFT JOIN 
+        members ON (instructors.id=members.instructor_id) ${queryFilter} GROUP BY instructors.id LIMIT $1 OFFSET $2`
+
+        db.query(query, [limit, offset], (err, results) => {
+            if (err) throw `Databse erro paginate! ${err}`
 
             callback(results.rows)
-        } )
+        })
     }
 
 }
