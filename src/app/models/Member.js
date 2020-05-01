@@ -111,7 +111,7 @@ module.exports = {
         query = `SELECT members.*, ${totalQuery} FROM members ${queryFilter}  LIMIT $1 OFFSET $2`
 
         db.query(query, [limit, offset], (err, results) => {
-            if (err) throw `Databse erro paginate! ${err}`
+            if (err) throw `Databese erro paginate! ${err}`
 
             callback(results.rows)
         })

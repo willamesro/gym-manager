@@ -15,9 +15,13 @@ module.exports = {
             page,
             limit,
             offset,
-            callback(members){
+            callback(members){ 
+
+                let amount = 0
+                if (members.length > 0) amount = members[0].total
+
                 const pagination = {
-                    total: Math.ceil(members[0].total/limit),
+                    total: Math.ceil(amount/limit),
                     page,
                     
                 }
